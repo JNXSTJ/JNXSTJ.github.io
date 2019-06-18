@@ -7,6 +7,14 @@
     </url>
 
     <url>
+        <loc>http://taojian.xyz/C-Primer-Plus/9/</loc>
+        <lastmod>2019-06-18T16:18:59.781Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://taojian.xyz/article/stringstream/</loc>
         <lastmod>2019-06-18T03:34:43.146Z</lastmod>
         <changefreq>weekly</changefreq>
