@@ -7,8 +7,40 @@
     </url>
 
     <url>
+        <loc>http://taojian.xyz/article/todo-list/</loc>
+        <lastmod>2021-05-31T04:20:50.418Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://taojian.xyz/article/%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E8%AE%A4%E8%AF%86%E4%BA%94%E7%BA%BF%E8%B0%B1/</loc>
+        <lastmod>2021-05-28T14:13:45.585Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://taojian.xyz/article/%E7%AC%AC%E4%B8%80%E7%AB%A0-%E8%AE%A4%E8%AF%86%E9%92%A2%E7%90%B4%E9%94%AE%E7%9B%98/</loc>
-        <lastmod>2021-05-27T10:02:40.804Z</lastmod>
+        <lastmod>2021-05-28T13:16:07.689Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://taojian.xyz/article/hexo%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%BB%E7%BB%93/</loc>
+        <lastmod>2021-05-28T12:44:43.263Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://taojian.xyz/article/nvm%E5%92%8Cnpm/</loc>
+        <lastmod>2021-05-28T12:24:39.845Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
