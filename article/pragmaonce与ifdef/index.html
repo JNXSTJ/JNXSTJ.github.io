@@ -14,11 +14,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          todo list - 陶健 | Blog
+          #pragmaonce与ifdef - 陶健 | Blog
         
     </title>
 
-    <link rel="canonical" href="http://taojian.xyz/article/todo-list/">
+    <link rel="canonical" href="http://taojian.xyz/article/pragmaonce与ifdef/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -88,14 +88,14 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                              <a class="tag" href="/tags/#规划" title="规划">规划</a>
+                              <a class="tag" href="/tags/#-c -c++" title="-c -c++">-c -c++</a>
                             
                         </div>
-                        <h1>todo list</h1>
+                        <h1>#pragmaonce与ifdef</h1>
                         <h2 class="subheading"></h2>
                         <span class="meta">
                             Posted by 陶健 on
-                            2021-05-31
+                            2021-06-02
                         </span>
                     </div>
                 
@@ -212,12 +212,54 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <ul>
-<li>[ ] MIT线性代数</li>
-<li>[ ] 矩阵分析</li>
-<li>[ ] 高等代数</li>
-<li>[ ] 泛函分析</li>
-</ul>
+                <p><strong>1.#pragmaonce这个宏有什么作用？</strong></p>
+<p>为了避免同一个头文件被包含（include）多次，C/C++中有两种宏实现方式：一种是#ifndef方式；另一种是#pragma once方式。</p>
+<p>在能够支持这两种方式的编译器上，二者并没有太大的区别。但两者仍然有一些细微的区别。</p>
+<p><strong>2.两者的使用方式有何区别？</strong></p>
+<p>示例代码如下：</p>
+<p>方式一：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> __SOMEFILE_H__</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span>  __SOMEFILE_H__</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 声明、定义语句</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+<p>方式二：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#pragmaonce</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 声明、定义语句</span></span><br></pre></td></tr></table></figure>
+<p><strong>3．两者各有何特点？</strong></p>
+<p>（1）#ifndef</p>
+<p>#ifndef的方式受C/C++语言标准支持。它不仅可以保证同一个文件不会被包含多次，也能保证内容完全相同的两个文件（或者代码片段）不会被不小心同时包含。</p>
+<p>当然，缺点就是如果不同头文件中的宏名不小心“撞车”，可能就会导致你看到头文件明明存在，但编译器却硬说找不到声明的状况——这种情况有时非常让人郁闷。</p>
+<p>由于编译器每次都需要打开头文件才能判定是否有重复定义，因此在编译大型项目时，ifndef会使得编译时间相对较长，因此一些编译器逐渐开始支持#pragma once的方式。</p>
+<p>（2）#pragma once</p>
+<p>#pragma once 一般由编译器提供保证：同一个文件不会被包含多次。注意这里所说的“同一个文件”是指物理上的一个文件，而不是指内容相同的两个文件。</p>
+<p><strong>你无法对一个头文件中的一段代码作pragma once声明，而只能针对文件。</strong></p>
+<p>其好处是，你不必再担心宏名冲突了，当然也就不会出现宏名冲突引发的奇怪问题。大型项目的编译速度也因此提高了一些。</p>
+<p>对应的缺点就是如果某个头文件有多份拷贝，本方法不能保证他们不被重复包含。当然，相比宏名冲突引发的“找不到声明”的问题，这种重复包含很容易被发现并修正。</p>
+<p>另外，这种方式不支持跨平台！</p>
+<p><strong>4.两者之间有什么联系？</strong></p>
+<p>#pragma once 方式产生于#ifndef之后，因此很多人可能甚至没有听说过。目前看来#ifndef更受到推崇。因为#ifndef受C/C++语言标准的支持，不受编译器的任何限制；</p>
+<p>而#pragma once方式却不受一些较老版本的编译器支持，一些支持了的编译器又打算去掉它，所以它的兼容性可能不够好。</p>
+<p>一般而言，当程序员听到这样的话，都会选择#ifndef方式，为了努力使得自己的代码“存活”时间更久，通常宁愿降低一些编译性能，这是程序员的个性，当然这是题外话啦。</p>
+<p>还看到一种用法是把两者放在一起的：</p>
+<p>#pragma once</p>
+<p>#ifndef <strong>SOMEFILE_H</strong></p>
+<p>#define <strong>SOMEFILE_H</strong></p>
+<p>… … // 声明、定义语句</p>
+<p>#endif</p>
+<p>总结：</p>
+<p>​    看起来似乎是想兼有两者的优点。不过只要使用了#ifndef就会有宏名冲突的危险，也无法避免不支持#pragma once的编译器报错，所以混用两种方法似乎不能带来更多的好处，倒是会让一些不熟悉的人感到困惑。</p>
+<p>​    选择哪种方式，应该在了解两种方式的情况下，视具体情况而定。只要有一个合理的约定来避开缺点，我认为哪种方式都是可以接受的。而这个已经不是标准或者编译器的责任了，应当由程序员自己或者小范围内的开发规范来搞定。</p>
+<p>为了避免同一个文件被include多次</p>
+<p>1  #ifndef方式<br>
+2  #pragma once方式</p>
+<p>在能够支持这两种方式的编译器上，二者并没有太大的区别，但是两者仍然还是有一些细微的区别。<br>
+方式一：</p>
+<p>#ifndef <strong>SOMEFILE_H</strong><br>
+#define <strong>SOMEFILE_H</strong><br>
+… … // 一些声明语句<br>
+#endif</p>
+<p>方式二：</p>
+<p>#pragma once<br>
+… … // 一些声明语句</p>
+<p>#ifndef的方式依赖于宏名字不能冲突，这不光可以保证同一个文件不会被包含多次，也能保证内容完全相同的两个文件不会被不小心同时包含。当然，缺点就是如果不同头文件的宏名不小心“撞车”，可能就会导致头文件明明存在，编译器却硬说找不到声明的状况</p>
+<p>#pragma once则由编译器提供保证：同一个文件不会被包含多次。注意这里所说的“同一个文件”是指物理上的一个文件，而不是指内容相同的两个文件。带来的好处是，你不必再费劲想个宏名了，当然也就不会出现宏名碰撞引发的奇怪问题。对应的缺点就是如果某个头文件有多份拷贝，本方法不能保证他们不被重复包含。当然，相比宏名碰撞引发的“找不到声明”的问题，重复包含更容易被发现并修正。</p>
+<p>方式一由语言支持所以移植性好，方式二 可以避免名字冲突</p>
 
                 
 
@@ -225,13 +267,9 @@
                 <!-- Pager -->
                 <ul class="pager">
                     
-                        <li class="previous">
-                            <a href="/article/pragmaonce与ifdef/" data-toggle="tooltip" data-placement="top" title="#pragmaonce与ifdef">&larr; Previous Post</a>
-                        </li>
-                    
                     
                         <li class="next">
-                            <a href="/article/第二章-认识五线谱/" data-toggle="tooltip" data-placement="top" title="第二章 认识五线谱">Next Post &rarr;</a>
+                            <a href="/article/todo-list/" data-toggle="tooltip" data-placement="top" title="todo list">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -307,7 +345,7 @@
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#规划" title="规划">规划</a>
+                          <a class="tag" href="/tags/#-c -c++" title="-c -c++">-c -c++</a>
                         
                     </div>
                 </section>
