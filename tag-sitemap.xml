@@ -58,15 +58,120 @@
     </url>
 
     <url>
-        <loc>http://taojian.xyz/tags/%E8%A7%84%E5%88%92/</loc>
-        <lastmod>2021-05-31T04:20:50.418Z</lastmod>
+        <loc>http://taojian.xyz/tags/c-c/</loc>
+        <lastmod>2021-06-01T16:45:35.546Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://taojian.xyz/tags/c-c/</loc>
-        <lastmod>2021-06-01T16:41:03.475Z</lastmod>
+        <loc>http://taojian.xyz/tags/%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/</loc>
+        <lastmod>2021-06-01T18:11:21.839Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://taojian.xyz/tags/%E6%84%9F%E6%82%9F/</loc>
+        <lastmod>2021-06-07T05:44:27.110Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://taojian.xyz/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/</loc>
+        <lastmod>2021-06-15T03:18:37.618Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://taojian.xyz/tags/STL/</loc>
+        <lastmod>2021-06-20T05:32:50.281Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://taojian.xyz/tags/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/</loc>
+        <lastmod>2021-06-22T10:44:27.286Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://taojian.xyz/tags/c/</loc>
+        <lastmod>2021-06-30T02:52:46.143Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://taojian.xyz/tags/cpp-stl/</loc>
+        <lastmod>2021-07-05T12:34:44.295Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://taojian.xyz/tags/cpp/</loc>
+        <lastmod>2021-07-06T09:53:44.285Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://taojian.xyz/tags/Life-drama/</loc>
+        <lastmod>2021-07-08T12:44:32.320Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://taojian.xyz/tags/Life-movie/</loc>
+        <lastmod>2021-07-17T05:00:04.375Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://taojian.xyz/tags/Life/</loc>
+        <lastmod>2021-07-17T05:21:24.528Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://taojian.xyz/tags/python/</loc>
+        <lastmod>2021-07-17T06:32:53.392Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://taojian.xyz/tags/%E7%94%9F%E4%BA%A7%E6%95%88%E7%8E%87/</loc>
+        <lastmod>2021-07-21T05:19:18.566Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://taojian.xyz/tags/%E8%A7%84%E5%88%92/</loc>
+        <lastmod>2021-07-21T16:24:10.597Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://taojian.xyz/tags/%E5%AD%A6%E4%B9%A0/</loc>
+        <lastmod>2021-07-21T16:29:02.067Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://taojian.xyz/tags/%E6%B8%B8%E6%88%8F/</loc>
+        <lastmod>2021-07-22T16:42:20.487Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

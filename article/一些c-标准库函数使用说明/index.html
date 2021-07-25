@@ -14,11 +14,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          [Hexo] My first post - 陶健 | Blog
+          一些c++标准库函数使用说明 - 陶健 | Blog
         
     </title>
 
-    <link rel="canonical" href="http://taojian.xyz/Hexo/my-first-post/">
+    <link rel="canonical" href="http://taojian.xyz/article/一些c-标准库函数使用说明/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -71,7 +71,7 @@
 <style type="text/css">
     header.intro-header{
         
-            background-image: url('/img/article_header/article_header.png')
+            background-image: url('/img/article_header/article_bg.jpg')
             /*post*/
         
     }
@@ -88,14 +88,16 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                              <a class="tag" href="/tags/#Hexo" title="Hexo">Hexo</a>
+                              <a class="tag" href="/tags/#c++" title="c++">c++</a>
+                            
+                              <a class="tag" href="/tags/#STL" title="STL">STL</a>
                             
                         </div>
-                        <h1>[Hexo] My first post</h1>
-                        <h2 class="subheading">This is my first article</h2>
+                        <h1>一些c++标准库函数使用说明</h1>
+                        <h2 class="subheading"></h2>
                         <span class="meta">
                             Posted by 陶健 on
-                            2019-06-10
+                            2021-06-20
                         </span>
                     </div>
                 
@@ -142,14 +144,14 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
@@ -212,7 +214,23 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <p>welcome to my blog!</p>
+                <h1 id="一些c标准库函数使用说明">一些c++标准库函数使用说明</h1>
+<h2 id="stdfill">std::fill</h2>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">ForwardIterator</span>, <span class="title">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class">  <span class="title">void</span> <span class="title">fill</span> (<span class="title">ForwardIterator</span> <span class="title">first</span>, <span class="title">ForwardIterator</span> <span class="title">last</span>, <span class="title">const</span> <span class="title">T</span>&amp; <span class="title">val</span>);</span></span><br></pre></td></tr></table></figure>
+<p>这个模版函数的行为等同于如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">ForwardIterator</span>, <span class="title">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class">  <span class="title">void</span> <span class="title">fill</span> (<span class="title">ForwardIterator</span> <span class="title">first</span>, <span class="title">ForwardIterator</span> <span class="title">last</span>, <span class="title">const</span> <span class="title">T</span>&amp; <span class="title">val</span>)</span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">  <span class="keyword">while</span> (first != last) &#123;</span><br><span class="line">    *first = val;</span><br><span class="line">    ++first;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>example</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// fill algorithm example</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;     // std::cout</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;    // std::fill</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;       // std::vector</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; myvector (<span class="number">8</span>);                       <span class="comment">// myvector: 0 0 0 0 0 0 0 0</span></span><br><span class="line"></span><br><span class="line">  <span class="built_in">std</span>::fill (myvector.begin(),myvector.begin()+<span class="number">4</span>,<span class="number">5</span>);   <span class="comment">// myvector: 5 5 5 5 0 0 0 0</span></span><br><span class="line">  <span class="built_in">std</span>::fill (myvector.begin()+<span class="number">3</span>,myvector.end()<span class="number">-2</span>,<span class="number">8</span>);   <span class="comment">// myvector: 5 5 5 8 8 8 0 0</span></span><br><span class="line"></span><br><span class="line">  <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"myvector contains:"</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;::iterator it=myvector.begin(); it!=myvector.end(); ++it)</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">' '</span> &lt;&lt; *it;</span><br><span class="line">  <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">myvector contains: 5 5 5 8 8 8 0 0</span><br></pre></td></tr></table></figure>
+<h2 id="stdcopy_n">std::copy_n</h2>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">InputIterator</span>, <span class="title">class</span> <span class="title">Size</span>, <span class="title">class</span> <span class="title">OutputIterator</span>&gt;</span></span><br><span class="line"><span class="class">  <span class="title">OutputIterator</span> <span class="title">copy_n</span> (<span class="title">InputIterator</span> <span class="title">first</span>, <span class="title">Size</span> <span class="title">n</span>, <span class="title">OutputIterator</span> <span class="title">result</span>);</span></span><br></pre></td></tr></table></figure>
+<p>这个模版函数的行为等同于如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">InputIterator</span>, <span class="title">class</span> <span class="title">Size</span>, <span class="title">class</span> <span class="title">OutputIterator</span>&gt;</span></span><br><span class="line"><span class="class">  <span class="title">OutputIterator</span> <span class="title">copy_n</span> (<span class="title">InputIterator</span> <span class="title">first</span>, <span class="title">Size</span> <span class="title">n</span>, <span class="title">OutputIterator</span> <span class="title">result</span>)</span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">  <span class="keyword">while</span> (n&gt;<span class="number">0</span>) &#123;</span><br><span class="line">    *result = *first;</span><br><span class="line">    ++result; ++first;</span><br><span class="line">    --n;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>例子：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// copy_n algorithm example</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;     // std::cout</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;    // std::copy</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;       // std::vector</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> myints[]=&#123;<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>,<span class="number">40</span>,<span class="number">50</span>,<span class="number">60</span>,<span class="number">70</span>&#125;;</span><br><span class="line">  <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; myvector;</span><br><span class="line"></span><br><span class="line">  myvector.resize(<span class="number">7</span>);   <span class="comment">// allocate space for 7 elements</span></span><br><span class="line"></span><br><span class="line">  <span class="built_in">std</span>::copy_n ( myints, <span class="number">7</span>, myvector.begin() );</span><br><span class="line"></span><br><span class="line">  <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"myvector contains:"</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;::iterator it = myvector.begin(); it!=myvector.end(); ++it)</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">' '</span> &lt;&lt; *it;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">myvector contains: 10 20 30 40 50 60 70</span><br></pre></td></tr></table></figure>
 
                 
 
@@ -221,12 +239,12 @@
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/article/单调栈/" data-toggle="tooltip" data-placement="top" title="[算法] 单调栈">&larr; Previous Post</a>
+                            <a href="/article/算法竞赛-线段树/" data-toggle="tooltip" data-placement="top" title="算法竞赛-线段树">&larr; Previous Post</a>
                         </li>
                     
                     
                         <li class="next">
-                            <a href="/article/hexo-theme-huweihuang/" data-toggle="tooltip" data-placement="top" title="[Hexo] Theme HuWeihuang">Next Post &rarr;</a>
+                            <a href="/article/贝塞尔曲线/" data-toggle="tooltip" data-placement="top" title="贝塞尔曲线">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -271,12 +289,18 @@
             <!-- Table of Contents -->
 
   
+    <style>
+      span.toc-nav-number{
+        display: none
+      }
+    </style>
+  
     
       <aside id="sidebar">
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="nav">none</ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#一些c标准库函数使用说明"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">&#x4E00;&#x4E9B;c++&#x6807;&#x51C6;&#x5E93;&#x51FD;&#x6570;&#x4F7F;&#x7528;&#x8BF4;&#x660E;</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#stdfill"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">std::fill</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#stdcopy_n"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">std::copy_n</span></a></li></ol></li></ol>
         
         </div>
       </aside>
@@ -296,7 +320,9 @@
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#Hexo" title="Hexo">Hexo</a>
+                          <a class="tag" href="/tags/#c++" title="c++">c++</a>
+                        
+                          <a class="tag" href="/tags/#STL" title="STL">STL</a>
                         
                     </div>
                 </section>
@@ -389,7 +415,7 @@
 
                 </ul>
                 <p class="copyright text-muted">
-                    Copyright &copy; 陶健 2019 
+                    Copyright &copy; 陶健 2021 
                     <br>
                     Theme by <a href="http://beantech.org">BeanTech</a> 
                     <span style="display: inline-block; margin: 0 5px;">
